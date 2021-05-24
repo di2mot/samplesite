@@ -1,27 +1,14 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-        "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title> Доска объявлений :: Доска объявлений</title>
-</head>
-<body>
-    <h1> Добавление Объявления</h1>
-    <div>
-        <a href="{% url 'index' %}">Главная страница</a>
-        {% for rubric in rubrics %}
-        <a href="{% url 'by_rubric' rubric.pk %}">{{ rubric.name }}</a>
-        {% endfor %}
-        <a href="{% url 'add' %}"> Добавить </a>
-    </div>
+{% extends 'layout/basik.html' %}
 
+{% block title %} Добавить объявление {% endblock %}
+{% block content %}
 
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Добавить">
+<h2>Добавить объвление</h2>
 
+<form method="post">
+    {% csrf_token %}
+    {% form.as_p %}
+    <input type="submit" value="Добавить">
+</form>
 
-    </form>
-</body>
-</html>
+{% endblock %}
